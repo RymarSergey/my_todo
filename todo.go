@@ -27,7 +27,7 @@ type UserItem struct {
 type UpdateItemInput struct {
 	Title       *string `json:"title"`
 	Description *string `json:"description"`
-	Done        bool    `json:"done"`
+	Done        *bool   `json:"done"`
 }
 type UpdateListInput struct {
 	Title       *string `json:"title"`
