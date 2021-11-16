@@ -1,4 +1,4 @@
-port: "8000"
+port: "33333"
 
 db:
   host: "localhost"

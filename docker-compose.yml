@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  server:
+    build: .
+    image: my-todo_appl
+    container_name: rembo
+    command: go run cmd/main.go
+    env_file:
+      - .env
+    ports:
+      - 33333:33333
+      - 5436:5436
+    depends_on:
+      - db
+
+  db:
+    restart: always
+    image: postgres
+    ports:
+      - 5436:5436
