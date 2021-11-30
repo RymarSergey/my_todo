@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.9'
 
 services:
   server:
@@ -6,16 +6,21 @@ services:
     image: my-todo_appl
     container_name: rembo
     command: go run cmd/main.go
-    env_file:
-      - .env
     ports:
       - 33333:33333
-      - 5436:5436
     depends_on:
       - db
+    environment:
+      - DB_PASSWORD=qwerty
 
   db:
     restart: always
     image: postgres
+    volumes:
+      - db-data:/var/lib/mysql/data
+    environment:
+      - POSTGRES_PASSWORD=qwerty
     ports:
-      - 5436:5436
+      - 5436:5432
+volumes:
+  db-data:
